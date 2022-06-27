@@ -8,7 +8,7 @@
 <body>
   <div class="main">
     <div class="main-box">
-      <div class="name-book" th:text ="Книга  + ${book.name}"></div>
+      <div class="name-book" th:text ="Книга + ' ' + ${book.name}"></div>
         <form class="text-book" th:action="@{/}+${book.id}" method="POST">
             <textarea name="textBook" th:text="${book.text}"> </textarea>
             <button class="button-save" type="submit">Сохранить</button>
