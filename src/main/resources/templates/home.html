@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js"></script>
+</head>
+<body>
+
+    <!--картинки-->
+    <svg display="none">
+        <symbol id="trash-can" viewBox="0 0 448 512">
+            <g>
+                <path d="M32 464C32 490.5 53.5 512 80 512h288c26.5 0 48-21.5 48-48V128H32V464zM304 208C304 199.1 311.1 192 320 192s16 7.125 16 16v224c0 8.875-7.125 16-16 16s-16-7.125-16-16V208zM208 208C208 199.1 215.1 192 224 192s16 7.125 16 16v224c0 8.875-7.125 16-16 16s-16-7.125-16-16V208zM112 208C112 199.1 119.1 192 128 192s16 7.125 16 16v224C144 440.9 136.9 448 128 448s-16-7.125-16-16V208zM432 32H320l-11.58-23.16c-2.709-5.42-8.25-8.844-14.31-8.844H153.9c-6.061 0-11.6 3.424-14.31 8.844L128 32H16c-8.836 0-16 7.162-16 16V80c0 8.836 7.164 16 16 16h416c8.838 0 16-7.164 16-16V48C448 39.16 440.8 32 432 32z"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <div class="main">
+        <div class="main-box">
+            <form method="post" action="/add" class="input-box">
+                <input class="input" name="name" id="name" placeholder="Введите id или название книги">
+                <button class="button" type="submit">Добавить</button>
+            </form>
+            <div class="info-book">
+                <div class="info-book-name">Название</div>
+                <div class="info-book-date">Дата создания</div>
+            </div>
+            <div class="list-book">
+                <th:block th:each="book : ${listBook}">
+                    <div class="label">
+                        <a th:href="@{/}+${book.id}" style="width: 100%;text-decoration:none;">
+                            <button class="label-info-book">
+                                <div class="label-info-book-name" th:text ="${book.name}"></div>
+                                <div class="label-info-book-date" th:text ="${book.dateCreate}"></div>
+                            </button>
+                        </a>
+                        <form method="post" action="delete">
+                            <input id="id" name="id" type="hidden" th:attr="value=${book.id}">
+                            <button class="button-trash">
+                                <svg class="trash">
+                                    <use xlink:href="#trash-can"></use>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

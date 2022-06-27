@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="main">
+    <div class="main-box">
+      <div class="name-book" th:text ="${bookName}"></div>
+        <div class="text-book">Текст Книги</div>
+        <a class="back" href="/">К списку</a>
+    </div>
+  </div>
+</body>
+</html>
